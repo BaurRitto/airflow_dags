@@ -1,9 +1,14 @@
+"""
+This is a simple DAG example for Apache Airflow.
+"""
+
+from datetime import datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from datetime import datetime
 
 # Define a simple Python function
 def print_message():
+    """Prints a test message."""
     print("Hello, this is a test message from Airflow!")
 
 # Define the DAG and its settings
@@ -19,6 +24,3 @@ with DAG(
         task_id="hello_task",
         python_callable=print_message
     )
-
-    # Set task dependencies if any
-    hello_task
