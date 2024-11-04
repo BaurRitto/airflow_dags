@@ -6,6 +6,7 @@ Runs call procedure from snowflake
 from airflow import DAG
 from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 from airflow.utils.dates import days_ago
+from datetime import timedelta
 
 
 default_args = {
