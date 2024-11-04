@@ -29,7 +29,7 @@ with DAG(
     call_python_procedure = SnowflakeOperator(
         task_id='call_snowflake_python_procedure',
         snowflake_conn_id='snowflake_con',  # Connection ID defined in Airflow
-        sql="SELECT 1;",
+        sql="CALL USERS_LOAD_FROM_STAGE_TABLE();",
     )
 
     # Define the task
