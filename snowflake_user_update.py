@@ -22,7 +22,6 @@ with DAG(
     default_args=default_args,
     description='DAG to call Python Snowflake procedure for data loading',
     schedule_interval='@daily',  # Adjust as needed
-    start_date=days_ago(1),
     catchup=False,
 ) as dag:
 
