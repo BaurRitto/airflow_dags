@@ -15,7 +15,7 @@ def print_message():
 with DAG(
     dag_id="simple_dag",
     start_date=datetime(2023, 1, 1),
-    schedule_interval="@daily",
+    schedule_interval=None,
     catchup=False
 ) as dag:
 
