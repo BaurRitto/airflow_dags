@@ -21,7 +21,7 @@ with DAG(
     'snowflake_copy_python_procedure_dag',
     default_args=default_args,
     description='DAG to call Python Snowflake procedure for data loading',
-    schedule_interval='@daily',  # Adjust as needed
+    schedule_interval=None,  # Adjust as needed
     catchup=False,
 ) as dag:
 
