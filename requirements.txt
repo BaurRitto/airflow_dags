@@ -14,3 +14,6 @@ google-cloud-storage
 
 # Additional dependencies for airflow and dbt compatibility
 snowflake-connector-python
+
+# code validation
+pylint
