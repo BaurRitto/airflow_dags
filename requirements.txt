@@ -3,14 +3,14 @@ apache-airflow==2.8.3
 
 # Airflow providers for Snowflake and Google Cloud
 apache-airflow-providers-snowflake
-apache-airflow-providers-google
+# apache-airflow-providers-google
 
 # DBT core and Snowflake adapter
-dbt-core
-dbt-snowflake
+# dbt-core
+# dbt-snowflake
 
 # Google Cloud Storage Python client
-google-cloud-storage
+# google-cloud-storage
 
 # Additional dependencies for airflow and dbt compatibility
 snowflake-connector-python
