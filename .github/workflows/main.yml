@@ -48,7 +48,7 @@ jobs:
           AIRFLOW_SSH_KEY: ${{ secrets.AIRFLOW_SSH_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "$AIRFLOW_SSH_KEY" > ~/.ssh/id_rsa
+          echo "$AIRFLOW_SSH_KEY" >> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H 167.99.230.237 >> ~/.ssh/known_hosts
           rsync -avz -e "ssh -o StrictHostKeyChecking=no" . $AIRFLOW_SSH_USER@167.99.230.237:/home/airflow/airflow/dags
