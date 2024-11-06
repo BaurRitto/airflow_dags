@@ -32,17 +32,22 @@ jobs:
         run: |
           pylint .
 
-  # deploy:
-  #   name: Deploy DAGs to Airflow
-  #   runs-on: ubuntu-latest
-  #   needs: lint  # Only run deploy if lint job passes
+  deploy:
+    name: Deploy DAGs to Airflow
+    runs-on: ubuntu-latest
+    needs: lint  # Only run deploy if lint job passes
 
-  #   steps:
-  #     - name: Check out code
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
 
-  #     - name: Deploy to Airflow server
-  #       env:
-  #         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-  #       run: |
-  #         ssh-agent bash -c "ssh-add - <<< \"$SSH_PRIVATE_KEY\"; rsync -avz --delete dags/ airflow@your_airflow_server:/path/to/airflow/dags"
+      - name: Deploy to Airflow server
+        env:
+          AIRFLOW_SSH_HOST: ${{ secrets.AIRFLOW_HOST }}
+          AIRFLOW_SSH_USER: ${{ secrets.AIRFLOW_USER }}
+          AIRFLOW_SSH_KEY: ${{ secrets.AIRFLOW_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$AIRFLOW_SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" . $AIRFLOW_SSH_USER@$AIRFLOW_SSH_HOST:/home/airflow/airflow/dags
