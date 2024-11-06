@@ -31,4 +31,3 @@ with DAG(
         snowflake_conn_id='snowflake_con',  # Connection ID defined in Airflow
         sql="CALL USERS_LOAD_FROM_STAGE_TABLE();",
     )
-
