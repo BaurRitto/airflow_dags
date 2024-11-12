@@ -15,7 +15,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id='my_dag_id',
+    dag_id='snowflake_procedure_copy_into_raw_data',
     default_args=default_args,
     start_date=days_ago(1),
     schedule_interval=None,
