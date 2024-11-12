@@ -31,9 +31,12 @@ jobs:
       - name: Lint DAG files
         run: |
           pylint .
-      - name: Validate DAGs with Airflow
+      - name: Initialize Airflow database
         run: |
           export AIRFLOW__CORE__LOAD_EXAMPLES=False
+          airflow db init  # Initialize the Airflow metadata database
+      - name: Validate DAGs with Airflow
+        run: |
           airflow dags list
   deploy:
     name: Deploy DAGs to Airflow
