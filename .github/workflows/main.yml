@@ -31,7 +31,10 @@ jobs:
       - name: Lint DAG files
         run: |
           pylint .
-
+      - name: Validate DAGs with Airflow
+        run: |
+          export AIRFLOW__CORE__LOAD_EXAMPLES=False
+          airflow dags list
   deploy:
     name: Deploy DAGs to Airflow
     runs-on: ubuntu-latest
