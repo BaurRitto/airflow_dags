@@ -21,5 +21,6 @@ jobs:
           echo "$AIRFLOW_SSH_KEY" >> ~/.ssh/id_rsa
           # echo "$AIRFLOW_SSH_KEY"
           chmod 600 ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
           ssh-keyscan -H 167.99.230.237 >> ~/.ssh/known_hosts
           ssh -i ~/.ssh/id_rsa airflow@167.99.230.237 "echo 'Hello from GitHub Actions on the remote server!'"
