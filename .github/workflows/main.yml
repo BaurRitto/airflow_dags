@@ -24,20 +24,22 @@ jobs:
           python-version: '3.8'
           cache: 'pip' # caching pip dependencies
       - run: pip install -r requirements.txt
-      # - name: Install dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install -r requirements.txt
       - name: Lint DAG files
         run: |
           pylint .
+      - name: Copy DAGs to Airflow DAGs folder
+        run: |
+          mkdir -p ~/airflow/dags
+          cp -r * ~/airflow/dags/  # Copy DAGs to Airflow's default DAGs folder
       - name: Initialize Airflow database
         run: |
           export AIRFLOW__CORE__LOAD_EXAMPLES=False
           airflow db init  # Initialize the Airflow metadata database
       - name: Validate DAGs with Airflow
         run: |
-          airflow dags list
+          export AIRFLOW__CORE__LOAD_EXAMPLES=False
+          airflow dags list-import-errors
+        continue-on-error: false
   deploy:
     name: Deploy DAGs to Airflow
     runs-on: ubuntu-latest
