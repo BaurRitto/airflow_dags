@@ -23,7 +23,7 @@ with DAG(
 ) as dag:
     # Call the stored procedure in Snowflake
     call_snowflake_procedure = SnowflakeOperator(
-        task_id='call procedure copy into raw data',
+        task_id='call_procedure_copy_into_raw_data',
         snowflake_conn_id='snowflake_con',  # Connection ID defined in Airflow
         sql="CALL copy_instagram_posts_raw('{{ params.start_date }}');",
         params={
