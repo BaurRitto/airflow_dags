@@ -45,7 +45,7 @@ jobs:
         env:
           AIRFLOW_SSH_HOST: ${{ secrets.AIRFLOW_HOST }}
           AIRFLOW_SSH_USER: ${{ secrets.AIRFLOW_USER }}
-          AIRFLOW_SSH_KEY: ${{ AIRFLOW_VAR }}
+          AIRFLOW_SSH_KEY: ${{ env.AIRFLOW_VAR }}
         run: |
           mkdir -p ~/.ssh
           echo "$AIRFLOW_SSH_KEY" >> ~/.ssh/id_rsa
