@@ -8,14 +8,14 @@ jobs:
     name: Deploy DAGs to Airflow
     runs-on: ubuntu-latest
 
-     steps:
-       - name: Check out code
-         uses: actions/checkout@v4
-       - name: Run script in Airflow server
-         env:
-           AIRFLOW_SSH_HOST: ${{ secrets.AIRFLOW_HOST }}
-           AIRFLOW_SSH_USER: ${{ secrets.AIRFLOW_USER }}
-           AIRFLOW_SSH_KEY: ${{ secrets.AIRFLOW_VAR }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Run script in Airflow server
+        env:
+          AIRFLOW_SSH_HOST: ${{ secrets.AIRFLOW_HOST }}
+          AIRFLOW_SSH_USER: ${{ secrets.AIRFLOW_USER }}
+          AIRFLOW_SSH_KEY: ${{ secrets.AIRFLOW_VAR }}
         run: |
           mkdir -p ~/.ssh
           echo "$AIRFLOW_SSH_KEY" >> ~/.ssh/id_rsa
