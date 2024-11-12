@@ -51,4 +51,4 @@ jobs:
           echo "$AIRFLOW_SSH_KEY" >> ~/.ssh/id_rsa
           echo "$AIRFLOW_SSH_KEY"
           chmod 600 ~/.ssh/id_rsa
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" . $AIRFLOW_SSH_USER@$AIRFLOW_HOST:/home/airflow/airflow/dags
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" . $AIRFLOW_SSH_USER@$AIRFLOW_SSH_HOST:/home/airflow/airflow/dags
