@@ -31,6 +31,10 @@ jobs:
       - name: Lint DAG files
         run: |
           pylint .
+      - name: Copy DAGs to Airflow DAGs folder
+        run: |
+          mkdir -p ~/airflow/dags
+          cp -r * ~/airflow/dags/  # Copy DAGs to Airflow's default DAGs folder
       - name: Initialize Airflow database
         run: |
           export AIRFLOW__CORE__LOAD_EXAMPLES=False
