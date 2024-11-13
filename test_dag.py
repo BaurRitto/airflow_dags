@@ -19,7 +19,7 @@ with DAG(
 ) as dag:
     
     trancate_raw = SnowflakeOperator(
-            task_id='from_stage_table_to_prod_table',
+            task_id='test_from_stage_table_to_prod_table',
             snowflake_conn_id='snowflake_con',
             sql="truncate INSTAGRAM_POSTS_RAW;"
         )
