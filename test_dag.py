@@ -11,7 +11,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id='snowflake_users_posts_from_raw',
+    dag_id='test_snowflake_users_posts_from_raw',
     default_args=default_args,
     start_date=days_ago(1),
     schedule_interval=None,
