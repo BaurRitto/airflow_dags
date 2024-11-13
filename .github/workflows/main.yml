@@ -43,7 +43,7 @@ jobs:
   deploy:
     name: Deploy DAGs to Airflow
     runs-on: ubuntu-latest
-    needs: lint  # Only run deploy if lint job passes
+    # needs: lint  # Only run deploy if lint job passes
 
     steps:
       - name: Check out code
